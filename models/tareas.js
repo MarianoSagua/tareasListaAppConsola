@@ -34,9 +34,7 @@ export class Tareas {
   }
 
   listarPendientesCompletadas(completadas = true) {
-    const newList = this.listadoArr.filter((tarea) =>
-      completadas ? tarea.completadoEn !== null : tarea.completadoEn === null
-    );
+    const newList = this.listadoArr.filter((tarea) => completadas ? tarea.completadoEn !== null : tarea.completadoEn === null);
 
     newList.forEach((tarea, i) => {
       const numberList = i + 1;
@@ -48,9 +46,10 @@ export class Tareas {
   toggleCompletadas(ids = []) {
     ids.forEach((id) => {
       const tarea = this._listado[id];
+      
       if (!tarea.completadoEn) {
         tarea.completadoEn = new Date().toISOString();
-        console.log("Se a agregado esta tarea a las completadas!");
+        console.log(`Se a agregado la tarea ${tarea.desc} a las completadas!`);
       }
     });
 
@@ -59,6 +58,14 @@ export class Tareas {
         this._listado[tarea.id].completadoEn = null;
       }
     });
+  }
+
+  get tareasCompletadasState() {
+    return this.listadoArr.some((tarea) => tarea.completadoEn !== null);
+  }
+
+  get tareasPendientesState() {
+    return this.listadoArr.some((tarea) => tarea.completadoEn === null);
   }
 
   get listadoArr() {
@@ -72,3 +79,8 @@ export class Tareas {
     return newList;
   }
 }
+
+
+
+
+

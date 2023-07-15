@@ -93,13 +93,13 @@ export const listadoTareasBorrar = async (tareas = []) => {
 
     return {
       value: tarea.id,
-      name: `${idx} ${tarea.desc}`,
+      name: `${idx}. ${tarea.desc}`,
     };
   });
 
   choices.unshift({
     value: "0",
-    name: "0.".brightBlue + "Cancelar",
+    name: "0. ".brightBlue + "Cancelar",
   });
 
   const preguntas = [
@@ -154,3 +154,6 @@ export const mostrarListadoChecklist = async (tareas = []) => {
 
   return ids;
 };
+
+
+

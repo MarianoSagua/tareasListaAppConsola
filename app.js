@@ -29,13 +29,25 @@ const main = async () => {
         tareas.crearTarea(desc);
         break;
       case "2":
-        tareas.listadoCompleto();
+        if (tareas.listadoArr.length === 0) {
+          console.log("No hay nada por el momento!");
+        } else {
+          tareas.listadoCompleto();
+        }
         break;
       case "3":
-        tareas.listarPendientesCompletadas(true);
+        if (tareas.tareasCompletadasState === false) {
+          console.log("No hay nada por el momento!");
+        } else {
+          tareas.listarPendientesCompletadas(true);
+        }
         break;
       case "4":
-        tareas.listarPendientesCompletadas(false);
+        if (tareas.tareasPendientesState === false) {
+          console.log("No hay nada por el momento!");
+        } else {
+          tareas.listarPendientesCompletadas(false);
+        }
         break;
       case "5":
         const ids = await mostrarListadoChecklist(tareas.listadoArr);
